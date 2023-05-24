@@ -32,7 +32,9 @@ public class OcrService implements IOcrService {
         instance.setDatapath(IOcrService.modelFile); // IOcrService 인터페이스 파일에 정의한 상수
 
         // 한국어 학습 데이터 선택(기본 값은 영어)
-        instance.setLanguage("kor");
+        //instance.setLanguage("kor");
+        // 영어 학습 데이터 선택
+        instance.setLanguage("eng");
 
         // 이미지 파일로부터 텍스트 읽기
         String result = instance.doOCR(resource.getFile());
