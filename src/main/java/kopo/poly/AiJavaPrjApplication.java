@@ -36,7 +36,8 @@ public class AiJavaPrjApplication implements CommandLineRunner {
         
         String filePath = "img"; // 문자열을 인식할 이미지 파일 경로
         //한글 파일String fileName = "news01.jpg"; // 문자열을 인식할 이미지 파일 이름
-        String fileName = "engsample.jpg";
+        String fileName = "news01.jpg";
+        //String fileName = "engsample.jpg";
 
         // 전달할 값(Parameter) 약자로 보통 변수명 앞에 p를 붙임 => pDTO
         OcrDTO pDTO = new OcrDTO(); //OcrService의 함수에 정보를 전달할 DTO를 메모리에 올리기

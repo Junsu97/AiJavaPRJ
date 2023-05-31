@@ -16,7 +16,24 @@
     <properties>
         <java.version>1.8</java.version>
     </properties>
+
+    <repositories>
+        <repository>
+            <id>jitpack.io</id>
+            <url>https://jitpack.io</url>
+        </repository>
+    </repositories>
+
+
     <dependencies>
+
+        <!-- Komoran 라이브러리 -->
+        <dependency>
+            <groupId>com.github.shin285</groupId>
+            <artifactId>KOMORAN</artifactId>
+            <version>3.3.4</version>
+        </dependency>
+
         <!-- OCR 구현을 위한 Tesseract 라이브러리 다운로드-->
         <dependency>
             <groupId>net.sourceforge.tess4j</groupId>
