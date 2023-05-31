@@ -81,6 +81,7 @@ public class AiJavaPrjApplication implements CommandLineRunner {
 
         // 중복 제거된 전체 단어마다 반복하기
         for(String s : distinct){
+            //frequency (컬렉션, 빈도수를 찾을 문자열 혹은 정수 및 실수) -> 빈도수를 정수형으로 반환
             int count = Collections.frequency(nouns, s);// 단어 빈도수
             rMap.put(s, count);
 
