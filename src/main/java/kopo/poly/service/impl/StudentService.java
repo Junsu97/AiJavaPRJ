@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.Scanner;
 
 @Slf4j
 @RequiredArgsConstructor
@@ -37,10 +38,19 @@ public class StudentService implements IStudentService {
         List<StudentDTO> rList = Optional.ofNullable(
                 studentMapper.getStudentList()
         ).orElseGet(ArrayList::new);
+        // orElseGet() = null 값을 Empty로 처리
+        // ArrayList 형태로 null이 아닌 Empty 로 메모리에 올려만 둠
 
         log.info(this.getClass().getName() + ".insertStudent End!");
 
         return rList;
+    }
+
+    public void deleteStudent(StudentDTO pDTO) throws Exception{
+        log.info(this.getClass().getName() + "deleteStudent Start!");
+
+        studentMapper.deleteStudent(pDTO);
+        log.info(this.getClass().getName() + "deleteStudent End!");
     }
 
 }

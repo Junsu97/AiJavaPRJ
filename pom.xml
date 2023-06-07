@@ -34,6 +34,12 @@
             <version>3.3.4</version>
         </dependency>
 
+        <dependency>
+            <groupId>com.oracle.ojdbc</groupId>
+            <artifactId>orai18n</artifactId>
+            <version>19.3.0.0</version>
+        </dependency>
+
         <!-- OCR 구현을 위한 Tesseract 라이브러리 다운로드-->
         <dependency>
             <groupId>net.sourceforge.tess4j</groupId>
