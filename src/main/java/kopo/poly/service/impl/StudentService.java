@@ -45,7 +45,7 @@ public class StudentService implements IStudentService {
 
         return rList;
     }
-
+    @Override
     public void deleteStudent(StudentDTO pDTO) throws Exception{
         log.info(this.getClass().getName() + "deleteStudent Start!");
 
