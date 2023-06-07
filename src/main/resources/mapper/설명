@@ -1,0 +1,13 @@
+select * from user where user_id = #{userId} => preparedStatement 값 바인딩
+
+select * from user where user_id = '값 ㅇㅇㅇㅇㅇ'
+
+select * from user where user_id = ${userId} => 파라미터가 바로 출력됨 절대 쓰면 안됨!!
+select * from user where user_id = '값 ㅇㅇㅇㅇㅇ'
+
+
+내가 입력한 파라미터 값 => 1 or 1=1;
+select * from user where user_id = 'test' and password = 1 or 1=1;
+
+내가 입력한 파라미터 값 => 1; shutdown;
+select * from user where user_id = 1; shutdown;
