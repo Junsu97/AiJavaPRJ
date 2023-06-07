@@ -124,6 +124,7 @@ public class AiJavaPrjApplication implements CommandLineRunner {
         rList.forEach(dto -> {
             log.info("DB에 저장된 아이디 : " + dto.getUserId());
             log.info("DB에 저장된 이름 : " + dto.getUserName());
+
             log.info("DB에 저장된 이메일 : " + dto.getEmail());
             log.info("DB에 저장된 주소 : " + dto.getAddr());
         });
