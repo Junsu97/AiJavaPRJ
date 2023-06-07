@@ -113,7 +113,7 @@ public class AiJavaPrjApplication implements CommandLineRunner {
         pDTO = new StudentDTO();
 
         // Student 테이블에 저장할 값을 DTO에 저장하기
-        pDTO.setUserId("junsu11");
+        pDTO.setUserId("junsu12");
         pDTO.setUserName("한준수12");
         pDTO.setEmail("wnstn7759@naver.com");
         pDTO.setAddr("서울");
@@ -129,6 +129,8 @@ public class AiJavaPrjApplication implements CommandLineRunner {
             log.info("DB에 저장된 주소 : " + dto.getAddr());
         });
 
+
+        // Delete
         log.info("삭제하고 싶은 ID가 있다면 Y 없다면 아무키");
         String str = in.nextLine();
 
@@ -143,6 +145,7 @@ public class AiJavaPrjApplication implements CommandLineRunner {
                     pDTO.getAddr();
 
                     studentService.deleteStudent(pDTO);
+                    log.info(pDTO.getUserId() + "가 삭제 되었습니다.");
                 }else if(rList.get(i).getUserId().isEmpty()){
                     log.info("데이터가 비어있습니다.");
                 }
