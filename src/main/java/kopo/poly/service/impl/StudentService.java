@@ -47,6 +47,29 @@ public class StudentService implements IStudentService {
     }
 
 
+    // 여러명 동시 입력
+    @Override
+    public List<StudentDTO> insertStudentList(List<StudentDTO> pList) throws Exception {
+        for(int i = 0; i < pList.size(); i++){
+            Optional<StudentDTO> res = Optional.ofNullable(studentMapper.getStudentList().get(i));
+            if(res.isPresent()){
+                studentMapper.insertStudent(pList.get(i));
+                log.info(pList.get(i).getUserId());
+            }
+        }
+
+        List<StudentDTO> rList = Optional.ofNullable(
+                studentMapper.getStudentList()
+        ).orElseGet(ArrayList::new);
+        // orElseGet() = null 값을 Empty로 처리
+        // ArrayList 형태로 null이 아닌 Empty 로 메모리에 올려만 둠
+
+        log.info(this.getClass().getName() + ".insertStudentList End!");
+
+        return rList;
+    }
+
+
     @Override
     public void deleteStudent(StudentDTO pDTO) throws Exception{
         log.info(this.getClass().getName() + "deleteStudent Start!");

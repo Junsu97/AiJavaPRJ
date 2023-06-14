@@ -130,6 +130,40 @@ public class AiJavaPrjApplication implements CommandLineRunner {
             log.info("DB에 저장된 주소 : " + dto.getAddr());
         });
 
+/******************************************************************************/
+        // 여러명 인서트
+        List<StudentDTO> pList = new ArrayList<>();
+        log.info("추가할 학생수를 입력해주세요");
+        int num = in.nextInt();
+
+        for(int i = 0; i < num; i++){
+            pDTO = new StudentDTO();
+            log.info("DB에 저장할 아이디 : ");
+            pDTO.setUserId(in.next());
+            log.info("DB에 저장할 이름 : " );
+            pDTO.setUserName(in.next());
+
+            log.info("DB에 저장할 이메일 : " );
+            pDTO.setEmail(in.next());
+
+            log.info("DB에 저장할 주소 : ");
+            pDTO.setAddr(in.next());
+            pList.add(pDTO);
+        }
+
+
+        rList = studentService.insertStudentList(pList);
+
+
+        rList.forEach(dto -> {
+            log.info("DB에 저장된 아이디 : " + dto.getUserId());
+            log.info("DB에 저장된 이름 : " + dto.getUserName());
+            log.info("DB에 저장된 이메일 : " + dto.getEmail());
+            log.info("DB에 저장된 주소 : " + dto.getAddr());
+        });
+
+
+
 
 /*****************************************************************************/
         // 학생 수정하기
@@ -155,11 +189,11 @@ public class AiJavaPrjApplication implements CommandLineRunner {
 
         // Delete
         log.info("삭제하고 싶은 ID가 있다면 Y 없다면 아무키");
-        String str = in.nextLine();
+        String str = in.next();
 
         if(str.startsWith("y") || str.startsWith("Y")){
             log.info("삭제할 유저 아이디를 입력하세요");
-            String id = in.nextLine();
+            String id = in.next();
             for(int  i = 0; i < rList.size(); i++){
 
                 pDTO.setUserId(id);
