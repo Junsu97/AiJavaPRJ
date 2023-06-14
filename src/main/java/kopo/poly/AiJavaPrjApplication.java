@@ -132,7 +132,6 @@ public class AiJavaPrjApplication implements CommandLineRunner {
 
 
 /*****************************************************************************/
-        //DB 조회 결과를 표현
         // 학생 수정하기
         pDTO = new StudentDTO();
         
@@ -162,21 +161,24 @@ public class AiJavaPrjApplication implements CommandLineRunner {
             log.info("삭제할 유저 아이디를 입력하세요");
             String id = in.nextLine();
             for(int  i = 0; i < rList.size(); i++){
-                if(rList.get(i).getUserId().equals(id)){
-                    pDTO.setUserId(id);
-                    pDTO.setUserName("");
-                    pDTO.setEmail("");
-                    pDTO.getAddr();
 
-                    studentService.deleteStudent(pDTO);
-                    log.info(pDTO.getUserId() + "가 삭제 되었습니다.");
-                }else if(rList.get(i).getUserId().isEmpty()){
-                    log.info("데이터가 비어있습니다.");
-                }
+                pDTO.setUserId(id);
+
+                studentService.deleteStudent(pDTO);
+
+                rList.forEach(dto -> {
+                    log.info("DB에 저장된 아이디 : " + dto.getUserId());
+                    log.info("DB에 저장된 이름 : " + dto.getUserName());
+                    log.info("DB에 저장된 이메일 : " + dto.getEmail());
+                    log.info("DB에 저장된 주소 : " + dto.getAddr());
+                });
+
             }
         }else{
             log.info("프로그램을 종료합니다.");
         }
+/***************************************************************************************/
+
 
 
         log.info("\n자바 프로그래밍 종료");

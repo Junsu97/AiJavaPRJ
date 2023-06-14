@@ -50,8 +50,18 @@ public class StudentService implements IStudentService {
     @Override
     public void deleteStudent(StudentDTO pDTO) throws Exception{
         log.info(this.getClass().getName() + "deleteStudent Start!");
+        
+        //Student 테이블에 등록된 학생 아이디가 존재하는지 체크하기 위해 DB 조회
+        Optional<StudentDTO> res = Optional.ofNullable(studentMapper.getStudent(pDTO));
+        
+        if(res.isPresent()){ //DB 조회 결과로 회원아이디가 존재한다면
+            studentMapper.deleteStudent(pDTO);
+            log.info(pDTO.getUserId() + "님이 삭제되었습니다.");
+        }else{
+            log.info("회원이 존재하지 않아 삭제되지 못했습니다.");
+        }
 
-        studentMapper.deleteStudent(pDTO);
+
         log.info(this.getClass().getName() + "deleteStudent End!");
     }
 
