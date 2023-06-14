@@ -36,5 +36,10 @@ public interface IStudentMapper {
 
     StudentDTO getStudent(StudentDTO pDTO) throws Exception;
 
+    /*
+    학생 수정 쿼리 / 회원 수정은 PK로 설정된 USER_ID의 값 수정은 불가능하며, USER_ID값 기준으로 수정
+    * */
+    void updateStudent(StudentDTO pDTO) throws Exception;
+
     void deleteStudent(StudentDTO pDTO) throws Exception;
 }

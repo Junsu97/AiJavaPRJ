@@ -105,15 +105,17 @@ public class AiJavaPrjApplication implements CommandLineRunner {
 //        Collections.sort(sortResult, (o1, o2) -> o2.getValue().compareTo(o1.getValue()));
 //
 //        log.info("가장 많이 사용된 단어는? : " + sortResult);
+/**********************************************************************************/
 
-        StudentDTO pDTO; // 학생 등록, 수정, 삭제에 활용될 DTO
+         // 학생 등록, 수정, 삭제에 활용될 DTO
+        StudentDTO pDTO;
         List<StudentDTO> rList; //DB 조회 결과를 표현
 
         // 학생 등록하기
         pDTO = new StudentDTO();
 
         // Student 테이블에 저장할 값을 DTO에 저장하기
-        pDTO.setUserId("junsu12");
+        pDTO.setUserId("junsu123");
         pDTO.setUserName("한준수12");
         pDTO.setEmail("wnstn7759@naver.com");
         pDTO.setAddr("서울");
@@ -124,10 +126,32 @@ public class AiJavaPrjApplication implements CommandLineRunner {
         rList.forEach(dto -> {
             log.info("DB에 저장된 아이디 : " + dto.getUserId());
             log.info("DB에 저장된 이름 : " + dto.getUserName());
-
             log.info("DB에 저장된 이메일 : " + dto.getEmail());
             log.info("DB에 저장된 주소 : " + dto.getAddr());
         });
+
+
+/*****************************************************************************/
+        //DB 조회 결과를 표현
+        // 학생 수정하기
+        pDTO = new StudentDTO();
+        
+        pDTO.setUserId("junsu12"); //PK 칼럼인 회원 아이디를 기준으로 데이터를 수정
+        pDTO.setUserName("한준수_수정");
+        pDTO.setEmail("wnstn7759@naver.com_수정");
+        pDTO.setAddr("서울_수정");
+
+        rList = studentService.updateStudent(pDTO);
+
+        rList.forEach(dto -> {
+            log.info("DB에 저장된 아이디 : " + dto.getUserId());
+            log.info("DB에 저장된 이름 : " + dto.getUserName());
+            log.info("DB에 저장된 이메일 : " + dto.getEmail());
+            log.info("DB에 저장된 주소 : " + dto.getAddr());
+        });
+
+
+/***************************************************************************/
 
 
         // Delete

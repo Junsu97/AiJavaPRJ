@@ -45,12 +45,35 @@ public class StudentService implements IStudentService {
 
         return rList;
     }
+
+
     @Override
     public void deleteStudent(StudentDTO pDTO) throws Exception{
         log.info(this.getClass().getName() + "deleteStudent Start!");
 
         studentMapper.deleteStudent(pDTO);
         log.info(this.getClass().getName() + "deleteStudent End!");
+    }
+
+    @Override
+    public List<StudentDTO> updateStudent(StudentDTO pDTO) throws Exception {
+        log.info(this.getClass().getName() + "updateStudent Start!");
+
+        // Student 테이블에 등록된 학생 아이디가 존재하는지 체크하기 위해 DB 조회
+        Optional<StudentDTO> res = Optional.ofNullable(studentMapper.getStudent(pDTO));
+
+        if(res.isPresent()){
+            studentMapper.updateStudent(pDTO);
+            log.info(pDTO.getUserId() + "님이 수정되었습니다.");
+        }else{
+            log.info("존재하지 않는 회원 ID입니다.");
+        }
+
+        List<StudentDTO> rList = Optional.ofNullable(studentMapper.getStudentList()).orElseGet(ArrayList::new);
+
+        log.info(this.getClass().getName());
+
+        return rList;
     }
 
 }
